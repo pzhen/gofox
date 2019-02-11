@@ -1,12 +1,12 @@
 # gofox
 
-代码迁移到了新的仓库(https://github.com/pzhen/gofox.git)
+## 简介 
 
-bdemo 更名为 gofox
+golang web 通用快速开发后台框架
 
-1.时间比较久远了,现在传上Git上.先看下效果图.
+## 技术栈
 
-最近对代码进行了重构,增加了用户添加等功能
+beego + layui + mysql
 
 ![Image 1](https://raw.githubusercontent.com/pzhen/bdemo/master/doc/bdemo-1.png)
 
@@ -16,9 +16,11 @@ bdemo 更名为 gofox
 
 ![Image 4](https://raw.githubusercontent.com/pzhen/bdemo/master/doc/bdemo-4.png)
 
-2.采用glide包管理. 需要vpn将依赖的其他类包更新下来. 
+## 安装
 
-3.配置sql.(在doc目录)
+采用glide包管理. 需要vpn将依赖的其他类包更新下来. 
 
-4.bee run gofox 就可以访问了.(http://127.0.0.1:8082/sys_user/login_form)
+配置sql.(在doc目录)
+
+bee run gofox 就可以访问了.(http://127.0.0.1:8082/sys_user/login_form)
 账号密码 abc123/abc123
