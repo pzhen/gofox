@@ -1,0 +1,113 @@
+.fl{
+        float: left;
+}
+.fr{
+        float: right;
+}
+/* 清除浮动 */
+.cls{}
+.cls::before,.cls::after{display: block; content: " "; clear: both; height: 0; font-size: 0; line-height: 0; overflow: hidden;}
+
+.layui-layout-admin .layui-side {
+        width: 140px;
+}
+
+.layui-nav-tree {
+        width: 140px;
+}
+
+.layui-body {
+        left: 140px;
+        bottom: 0 !important;
+        overflow-y: hidden;
+}
+
+.top_nav {
+        line-height: 36px;
+        font-size: 14px;
+        padding-left: 20px;
+        background: rgba(95, 121, 158, 1);
+}
+
+.top_container {
+        line-height: 36px;
+        font-size: 14px;
+        padding-left: 20px;
+        background: rgba(95, 121, 158, 1);
+        color: #fff;
+}
+
+.body-top {
+        height: 36px !important;
+        z-index:10;
+}
+
+#container {
+        padding:10px 0;
+        top: 96px;
+        background: aliceblue;
+        overflow-x: scroll;
+}
+#container .layui-main-cont{
+        width: 100%;
+        height: 100% !important;
+}
+#container iframe {
+        width: 100%;
+        height:93.5% !important;
+        min-height: 500px;
+        border: none;
+}
+
+.layui-container {
+        padding: 0 10px;
+        width: 100%;
+        min-width: 990px;
+}
+
+
+
+.layui-btn {
+        height: 28px;
+        line-height: 28px;
+}
+.layui-inline{
+        margin-bottom: 20px;
+}
+td,th{
+        word-break:break-all !important;
+        text-align: center !important;
+}
+.layui-box{
+        float: right;
+}
+.layui-nav-itemed{
+        background:black;
+}
+.layui-nav .layui-nav-child a{
+        padding-left: 34px;
+        font-size:12px !important;
+}
+.layui-nav-itemed:first-child {
+        background-color: #393D49!important;
+}
+.layui-nav .layui-nav-itemed > a{
+        background: #5FB878;
+}
+.layui-nav .layui-nav-itemed > a:hover{
+        background: #5FB878;
+}
+
+.layui-nav-item-OK{
+	    border-bottom: 2px solid #fff;
+	    
+}
+.layui-nav-item-OK:hover{
+		border-bottom: 2px solid #5FB878;
+}
+#container .layui-tab-brief>.layui-tab-more li.layui-this:after, .layui-tab-brief>.layui-tab-title .layui-this:after{
+	top: 1px !important;
+}
+.layui-nav-item-OK a{
+	color:currentColor;
+}

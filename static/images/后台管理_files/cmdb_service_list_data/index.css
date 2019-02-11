@@ -1,0 +1,17 @@
+form{
+    width: 100%;
+    min-width: 990px;
+    min-height:300px;
+}
+.pTop{
+    padding-top:15px;
+}
+.table-title, .table-uploader, .table-intro, .table-chapter, .table-or{
+   color: rgb(153, 0, 0); 
+}
+.table-check, .table-recheck {
+    color: #00f;
+}
+.layui-inline, .layui-container button {
+    margin-bottom: 10px;
+}

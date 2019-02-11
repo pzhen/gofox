@@ -1,0 +1,7 @@
+package: gofox
+import:
+- package: github.com/astaxie/beego
+  version: 1.9.2
+
+- package: github.com/beego/bee
+- package: github.com/go-sql-driver/mysql

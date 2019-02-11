@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>后台管理</title>
+    <link rel="stylesheet" href="%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86_files/layui.css">
+    <link rel="stylesheet" href="%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86_files/iconfont.css">
+    <link rel="stylesheet" href="%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86_files/index.css">
+    <script src="%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86_files/jquery-1.js"></script>
+    <script src="%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86_files/base.js"></script>
+    <script src="%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86_files/layui.js"></script>
+<script>
+    /* 设置首页的iframe的Src and Title */
+    function setUrlAndTitle(dataUrl,dataTitle){
+        $('#iframe').attr('src',dataUrl);
+        $('.top_container').text(dataTitle);
+        return true;
+    }
+
+  
+</script><link id="layuicss-layer" rel="stylesheet" href="%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86_files/layer.css" media="all"></head>
+
+<body data-body="body">
+<!-- 外层盒子S -->
+<div class="layui-layout layui-layout-admin kit-layout-admin">
+
+    <!-- 头部S -->
+    <div class="layui-header">
+        <div class="layui-logo">
+            微博动漫
+                            <div style="position: absolute;font-size: 60px; color: red;top:0px;z-index: 1000000;">
+                    Testing                </div>
+                    </div>
+        <ul class="layui-nav layui-layout-right kit-nav">
+            <!-- 用户名 S -->
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    <i class="icon iconfont icon-person2" aria-hidden="true"></i>
+                    admin                </a>
+            </li>
+            <!-- 用户名 E -->
+
+            <!-- 退出登录 S -->
+            <li class="layui-nav-item">
+                <a href="http://develop.admin.manhua.weibo.com/welcome/home/login_out">
+                    <i class="icon iconfont icon-eraser" aria-hidden="true"></i>
+                    注销
+                </a>
+            </li>
+            <!-- 退出登录 E -->
+        <span class="layui-nav-bar"></span></ul>
+    </div>
+    <!-- 头部E -->
+
+    <!-- 左部分导航E -->
+    <div class="layui-side layui-bg-black kit-side">
+        <div class="layui-side-scroll">
+            <div class="kit-side-fold top_nav">
+                导航
+            </div>
+
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <ul class="layui-nav layui-nav-tree " id="nav_list" lay-filter="kitNavbar" kit-navbar="">
+                                    <li class="layui-nav-item">
+                        <a href="javascript:;">
+                            系统                        <span class="layui-nav-more"></span></a>
+                                                <dl class="layui-nav-child">
+                                                            <dd>
+
+                                    <a href="javascript:;" class="menu" data-id="127" data-url="http://develop.admin.manhua.weibo.com/welcome/home/edit_passwd_form" data-title="当前位置:修改密码">
+                                        修改密码                                    </a>
+                                </dd>
+                                                    </dl>
+                                            </li>
+                                        <li class="layui-nav-item">
+                        <a href="javascript:;">
+                            监测                        <span class="layui-nav-more"></span></a>
+                                                <dl class="layui-nav-child">
+                                                            <dd>
+
+                                    <a href="javascript:;" class="menu" data-id="275" data-url="http://develop.admin.manhua.weibo.com//check/sql/sql_api_list" data-title="当前位置:SQL管理">
+                                        SQL管理                                    </a>
+                                </dd>
+                                                            <dd>
+
+                                    <a href="javascript:;" class="menu" data-id="318" data-url="http://develop.admin.manhua.weibo.com/check/check_redis/redis_list" data-title="当前位置:Redis管理">
+                                        Redis管理                                    </a>
+                                </dd>
+                                                            <dd>
+
+                                    <a href="javascript:;" class="menu" data-id="187" data-url="http://develop.admin.manhua.weibo.com/check/html/html_view" data-title="当前位置:页面监测管理">
+                                        页面监测管理                                    </a>
+                                </dd>
+                                                            <dd class="">
+
+                                    <a href="javascript:;" class="menu" data-id="213" data-url="http://develop.admin.manhua.weibo.com/check/api/api_batch_check" data-title="当前位置:API监测管理">
+                                        API监测管理                                    </a>
+                                </dd>
+                                                    </dl>
+                                            </li>
+                                        <li class="layui-nav-item">
+                        <a href="javascript:;">
+                            代码上线                        <span class="layui-nav-more"></span></a>
+                                                <dl class="layui-nav-child">
+                                                            <dd>
+
+                                    <a href="javascript:;" class="menu" data-id="293" data-url="http://develop.admin.manhua.weibo.com/project/project/project_list" data-title="当前位置:项目列表">
+                                        项目列表                                    </a>
+                                </dd>
+                                                            <dd>
+
+                                    <a href="javascript:;" class="menu" data-id="312" data-url="http://develop.admin.manhua.weibo.com/project/task/my_task_list" data-title="当前位置:我的任务">
+                                        我的任务                                    </a>
+                                </dd>
+                                                    </dl>
+                                            </li>
+                                        <li class="layui-nav-item">
+                        <a href="javascript:;">
+                            cron管理                        <span class="layui-nav-more"></span></a>
+                                                <dl class="layui-nav-child">
+                                                            <dd>
+
+                                    <a href="javascript:;" class="menu" data-id="346" data-url="http://develop.admin.manhua.weibo.com/check/cron/cron_list" data-title="当前位置:cron列表">
+                                        cron列表                                    </a>
+                                </dd>
+                                                            <dd>
+
+                                    <a href="javascript:;" class="menu" data-id="349" data-url="http://develop.admin.manhua.weibo.com/check/cron_log/cron_log_list" data-title="当前位置:cron日志">
+                                        cron日志                                    </a>
+                                </dd>
+                                                    </dl>
+                                            </li>
+                                        <li class="layui-nav-item layui-nav-itemed">
+                        <a href="javascript:;">
+                            CMDB管理                        <span class="layui-nav-more"></span></a>
+                                                <dl class="layui-nav-child">
+                                                            <dd class="">
+
+                                    <a href="javascript:;" class="menu" data-id="379" data-url="http://develop.admin.manhua.weibo.com/cmdb/cmdb_provider/cmdb_provider_list" data-title="当前位置:运营商管理">
+                                        运营商管理                                    </a>
+                                </dd>
+                                                            <dd class="">
+
+                                    <a href="javascript:;" class="menu" data-id="380" data-url="http://develop.admin.manhua.weibo.com/cmdb/cmdb_business/cmdb_business_list" data-title="当前位置:业务线管理">
+                                        业务线管理                                    </a>
+                                </dd>
+                                                            <dd class="layui-this">
+
+                                    <a href="javascript:;" class="menu" data-id="381" data-url="http://develop.admin.manhua.weibo.com/cmdb/cmdb_service/cmdb_service_list" data-title="当前位置:服务管理">
+                                        服务管理                                    </a>
+                                </dd>
+                                                            <dd>
+
+                                    <a href="javascript:;" class="menu" data-id="385" data-url="http://develop.admin.manhua.weibo.com/cmdb/cmdb_ip/cmdb_ip_list" data-title="当前位置:IP段管理">
+                                        IP段管理                                    </a>
+                                </dd>
+                                                            <dd>
+
+                                    <a href="javascript:;" class="menu" data-id="387" data-url="http://develop.admin.manhua.weibo.com/cmdb/cmdb_question/cmdb_question_list" data-title="当前位置:问题管理">
+                                        问题管理                                    </a>
+                                </dd>
+                                                            <dd>
+
+                                    <a href="javascript:;" class="menu" data-id="389" data-url="http://develop.admin.manhua.weibo.com/cmdb/cmdb_repair/cmdb_repair_list" data-title="当前位置:故障管理">
+                                        故障管理                                    </a>
+                                </dd>
+                                                            <dd>
+
+                                    <a href="javascript:;" class="menu" data-id="394" data-url="http://develop.admin.manhua.weibo.com/cmdb/cmdb_host/cmdb_host_list" data-title="当前位置:主机管理">
+                                        主机管理                                    </a>
+                                </dd>
+                                                            <dd>
+
+                                    <a href="javascript:;" class="menu" data-id="399" data-url="http://develop.admin.manhua.weibo.com/cmdb/cmdb_script/cmdb_script_list" data-title="当前位置:脚本管理">
+                                        脚本管理                                    </a>
+                                </dd>
+                                                            <dd class="">
+
+                                    <a href="javascript:;" class="menu" data-id="404" data-url="http://develop.admin.manhua.weibo.com/cmdb/cmdb_action_log/cmdb_action_log_list" data-title="当前位置:日志管理">
+                                        日志管理                                    </a>
+                                </dd>
+                                                    </dl>
+                                            </li>
+                    
+            <span class="layui-nav-bar" style="top: 202.5px; height: 0px; opacity: 0;"></span></ul>
+
+        </div>
+    </div>
+    <!-- 左部分导航S -->
+
+
+    <!-- 位置S -->
+    <div class="layui-body" id="body-top">
+        <div class="kit-side-fold top_container">当前位置:服务管理</div>
+    </div>
+    <!-- 位置E -->
+
+    <!-- 内容主体区域 S -->
+    <div class="layui-body" id="container">
+        <div lay-filter="demoTitle" id="nvaTopTitle" style="background: #FFF;position: relative;top: -10px; margin: 0; ">
+                            <p class="list-TOP-nav" style="    padding-left: 15px;height: 50px; line-height: 50px; display: none; border-bottom: 1px solid #ccc;" id="three-level-346">
+                    
+                        <button class="layui-btn layui-btn-primary" data-url="http://develop.admin.manhua.weibo.com/check/cron/cron_list" onclick="$.clickJump(this)" data-title="当前位置:cron列表">
+                            cron列表                        </button>
+
+                        
+                        <button class="layui-btn layui-btn-primary" data-url="http://develop.admin.manhua.weibo.com/check/cron/cron_form" onclick="$.clickJump(this)" data-title="当前位置:添加cron">
+                            添加cron                        </button>
+
+                        
+                        <button class="layui-btn layui-btn-primary" data-url="http://develop.admin.manhua.weibo.com/check/cron/cron_cmd" onclick="$.clickJump(this)" data-title="当前位置:cron命令">
+                            cron命令                        </button>
+
+                        
+                </p>
+                            <p class="list-TOP-nav" style="padding-left: 15px; height: 50px; line-height: 50px; border-bottom: 1px solid rgb(204, 204, 204); display: none;" id="three-level-379">
+                    
+                        <button class="layui-btn layui-btn-normal" data-url="http://develop.admin.manhua.weibo.com/cmdb/cmdb_provider/cmdb_provider_list" onclick="$.clickJump(this)" data-title="当前位置:运营商列表">
+                            运营商列表                        </button>
+
+                        
+                        <button class="layui-btn layui-btn-primary" data-url="http://develop.admin.manhua.weibo.com/cmdb/cmdb_provider/cmdb_provider_add_form" onclick="$.clickJump(this)" data-title="当前位置:运营商添加">
+                            运营商添加                        </button>
+
+                        
+                </p>
+                            <p class="list-TOP-nav" style="padding-left: 15px; height: 50px; line-height: 50px; border-bottom: 1px solid rgb(204, 204, 204); display: none;" id="three-level-380">
+                    
+                        <button class="layui-btn layui-btn-normal" data-url="http://develop.admin.manhua.weibo.com/cmdb/cmdb_business/cmdb_business_list" onclick="$.clickJump(this)" data-title="当前位置:业务列表">
+                            业务列表                        </button>
+
+                        
+                        <button class="layui-btn layui-btn-primary" data-url="http://develop.admin.manhua.weibo.com/cmdb/cmdb_business/cmdb_business_add_form" onclick="$.clickJump(this)" data-title="当前位置:业务添加">
+                            业务添加                        </button>
+
+                        
+                </p>
+                            <p class="list-TOP-nav" style="padding-left: 15px; height: 50px; line-height: 50px; border-bottom: 1px solid rgb(204, 204, 204); display: block;" id="three-level-381">
+                    
+                        <button class="layui-btn layui-btn-normal" data-url="http://develop.admin.manhua.weibo.com/cmdb/cmdb_service/cmdb_service_list" onclick="$.clickJump(this)" data-title="当前位置:服务列表">
+                            服务列表                        </button>
+
+                        
+                        <button class="layui-btn layui-btn-primary" data-url="http://develop.admin.manhua.weibo.com/cmdb/cmdb_service/cmdb_service_add_form" onclick="$.clickJump(this)" data-title="当前位置:服务添加">
+                            服务添加                        </button>
+
+                        
+                </p>
+                            <p class="list-TOP-nav" style="    padding-left: 15px;height: 50px; line-height: 50px; display: none; border-bottom: 1px solid #ccc;" id="three-level-275">
+                    
+                        <button class="layui-btn layui-btn-primary" data-url="http://develop.admin.manhua.weibo.com//check/sql/sql_api_list" onclick="$.clickJump(this)" data-title="当前位置:SQL_API列表">
+                            SQL_API列表                        </button>
+
+                        
+                </p>
+                            <p class="list-TOP-nav" style="padding-left: 15px; height: 50px; line-height: 50px; border-bottom: 1px solid rgb(204, 204, 204); display: none;" id="three-level-213">
+                    
+                        <button class="layui-btn layui-btn-primary" data-url="http://develop.admin.manhua.weibo.com/check/api/api_debug_form" onclick="$.clickJump(this)" data-title="当前位置:api调试工具">
+                            api调试工具                        </button>
+
+                        
+                        <button class="layui-btn layui-btn-primary" data-url="http://develop.admin.manhua.weibo.com/check/api/api_batch_check" onclick="$.clickJump(this)" data-title="当前位置:api批量检测">
+                            api批量检测                        </button>
+
+                        
+                        <button class="layui-btn layui-btn-normal" data-url="http://develop.admin.manhua.weibo.com/check/api/api_request_list" onclick="$.clickJump(this)" data-title="当前位置:api请求日志">
+                            api请求日志                        </button>
+
+                        
+                        <button class="layui-btn layui-btn-primary" data-url="http://develop.admin.manhua.weibo.com/check/api/api_list" onclick="$.clickJump(this)" data-title="当前位置:api接口列表">
+                            api接口列表                        </button>
+
+                        
+                        <button class="layui-btn layui-btn-primary" data-url="http://develop.admin.manhua.weibo.com/check/api/api_test_list" onclick="$.clickJump(this)" data-title="当前位置:api实例列表">
+                            api实例列表                        </button>
+
+                        
+                        <button class="layui-btn layui-btn-primary" data-url="http://develop.admin.manhua.weibo.com/check/api/api_form" onclick="$.clickJump(this)" data-title="当前位置:添加Api">
+                            添加Api                        </button>
+
+                        
+                </p>
+                            <p class="list-TOP-nav" style="    padding-left: 15px;height: 50px; line-height: 50px; display: none; border-bottom: 1px solid #ccc;" id="three-level-293">
+                    
+                        <button class="layui-btn layui-btn-primary" data-url="http://develop.admin.manhua.weibo.com/project/project/project_list" onclick="$.clickJump(this)" data-title="当前位置:项目列表">
+                            项目列表                        </button>
+
+                        
+                        <button class="layui-btn layui-btn-primary" data-url="http://develop.admin.manhua.weibo.com/project/project/project_form" onclick="$.clickJump(this)" data-title="当前位置:添加项目">
+                            添加项目                        </button>
+
+                        
+                        <button class="layui-btn layui-btn-primary" data-url="http://develop.admin.manhua.weibo.com/project/task/task_list" onclick="$.clickJump(this)" data-title="当前位置:任务列表">
+                            任务列表                        </button>
+
+                        
+                        <button class="layui-btn layui-btn-primary" data-url="http://develop.admin.manhua.weibo.com/project/question/question_list" onclick="$.clickJump(this)" data-title="当前位置:问题列表">
+                            问题列表                        </button>
+
+                        
+                        <button class="layui-btn layui-btn-primary" data-url="http://develop.admin.manhua.weibo.com/project/sql/sql_list" onclick="$.clickJump(this)" data-title="当前位置:SQL列表">
+                            SQL列表                        </button>
+
+                        
+                        <button class="layui-btn layui-btn-primary" data-url="http://develop.admin.manhua.weibo.com/project/task/task_data" onclick="$.clickJump(this)" data-title="当前位置:任务日历">
+                            任务日历                        </button>
+
+                        
+                </p>
+                            <p class="list-TOP-nav" style="    padding-left: 15px;height: 50px; line-height: 50px; display: none; border-bottom: 1px solid #ccc;" id="three-level-312">
+                    
+                        <button class="layui-btn layui-btn-primary" data-url="http://develop.admin.manhua.weibo.com/project/task/my_task_list" onclick="$.clickJump(this)" data-title="当前位置:开发任务">
+                            开发任务                        </button>
+
+                        
+                        <button class="layui-btn layui-btn-primary" data-url="http://develop.admin.manhua.weibo.com/project/task/my_task_review_list" onclick="$.clickJump(this)" data-title="当前位置:审核任务">
+                            审核任务                        </button>
+
+                        
+                </p>
+                            <p class="list-TOP-nav" style="    padding-left: 15px;height: 50px; line-height: 50px; display: none; border-bottom: 1px solid #ccc;" id="three-level-318">
+                    
+                        <button class="layui-btn layui-btn-primary" data-url="http://develop.admin.manhua.weibo.com/check/check_redis/redis_list" onclick="$.clickJump(this)" data-title="当前位置:Redis列表">
+                            Redis列表                        </button>
+
+                        
+                        <button class="layui-btn layui-btn-primary" data-url="http://develop.admin.manhua.weibo.com/check/check_redis/redis_form" onclick="$.clickJump(this)" data-title="当前位置:添加RdKey">
+                            添加RdKey                        </button>
+
+                        
+                        <button class="layui-btn layui-btn-primary" data-url="http://develop.admin.manhua.weibo.com/check/check_redis/redis_check_list" onclick="$.clickJump(this)" data-title="当前位置:redis实时状态">
+                            redis实时状态                        </button>
+
+                        
+                </p>
+                            <p class="list-TOP-nav" style="    padding-left: 15px;height: 50px; line-height: 50px; display: none; border-bottom: 1px solid #ccc;" id="three-level-349">
+                    
+                        <button class="layui-btn layui-btn-primary" data-url="http://develop.admin.manhua.weibo.com/check/cron_log/cron_log_list" onclick="$.clickJump(this)" data-title="当前位置:cron日志列表">
+                            cron日志列表                        </button>
+
+                        
+                        <button class="layui-btn layui-btn-primary" data-url="http://develop.admin.manhua.weibo.com/check/cron_log/cron_log_show" onclick="$.clickJump(this)" data-title="当前位置:cron图表">
+                            cron图表                        </button>
+
+                        
+                </p>
+                            <p class="list-TOP-nav" style="    padding-left: 15px;height: 50px; line-height: 50px; display: none; border-bottom: 1px solid #ccc;" id="three-level-385">
+                    
+                        <button class="layui-btn layui-btn-primary" data-url="http://develop.admin.manhua.weibo.com/cmdb/cmdb_ip/cmdb_ip_form" onclick="$.clickJump(this)" data-title="当前位置:新增IP段">
+                            新增IP段                        </button>
+
+                        
+                        <button class="layui-btn layui-btn-primary" data-url="http://develop.admin.manhua.weibo.com/cmdb/cmdb_ip/cmdb_ip_list" onclick="$.clickJump(this)" data-title="当前位置:ip段列表">
+                            ip段列表                        </button>
+
+                        
+                </p>
+                            <p class="list-TOP-nav" style="    padding-left: 15px;height: 50px; line-height: 50px; display: none; border-bottom: 1px solid #ccc;" id="three-level-387">
+                    
+                        <button class="layui-btn layui-btn-primary" data-url="http://develop.admin.manhua.weibo.com/cmdb/cmdb_question/cmdb_question_form" onclick="$.clickJump(this)" data-title="当前位置:新增问题">
+                            新增问题                        </button>
+
+                        
+                        <button class="layui-btn layui-btn-primary" data-url="http://develop.admin.manhua.weibo.com/cmdb/cmdb_question/cmdb_question_list" onclick="$.clickJump(this)" data-title="当前位置:问题列表">
+                            问题列表                        </button>
+
+                        
+                </p>
+                            <p class="list-TOP-nav" style="    padding-left: 15px;height: 50px; line-height: 50px; display: none; border-bottom: 1px solid #ccc;" id="three-level-389">
+                    
+                        <button class="layui-btn layui-btn-primary" data-url="http://develop.admin.manhua.weibo.com/cmdb/cmdb_repair/cmdb_repair_form" onclick="$.clickJump(this)" data-title="当前位置:新增故障">
+                            新增故障                        </button>
+
+                        
+                        <button class="layui-btn layui-btn-primary" data-url="http://develop.admin.manhua.weibo.com/cmdb/cmdb_repair/cmdb_repair_list" onclick="$.clickJump(this)" data-title="当前位置:故障列表">
+                            故障列表                        </button>
+
+                        
+                </p>
+                            <p class="list-TOP-nav" style="    padding-left: 15px;height: 50px; line-height: 50px; display: none; border-bottom: 1px solid #ccc;" id="three-level-394">
+                    
+                        <button class="layui-btn layui-btn-primary" data-url="http://develop.admin.manhua.weibo.com/cmdb/cmdb_host/cmdb_host_list" onclick="$.clickJump(this)" data-title="当前位置:主机列表">
+                            主机列表                        </button>
+
+                        
+                        <button class="layui-btn layui-btn-primary" data-url="http://develop.admin.manhua.weibo.com/cmdb/cmdb_host/cmdb_host_form" onclick="$.clickJump(this)" data-title="当前位置:添加主机">
+                            添加主机                        </button>
+
+                        
+                </p>
+                            <p class="list-TOP-nav" style="    padding-left: 15px;height: 50px; line-height: 50px; display: none; border-bottom: 1px solid #ccc;" id="three-level-399">
+                    
+                        <button class="layui-btn layui-btn-primary" data-url="http://develop.admin.manhua.weibo.com/cmdb/cmdb_script/cmdb_script_list" onclick="$.clickJump(this)" data-title="当前位置:脚本列表">
+                            脚本列表                        </button>
+
+                        
+                        <button class="layui-btn layui-btn-primary" data-url="http://develop.admin.manhua.weibo.com/cmdb/cmdb_script/cmdb_script_add_form" onclick="$.clickJump(this)" data-title="当前位置:添加脚本">
+                            添加脚本                        </button>
+
+                        
+                        <button class="layui-btn layui-btn-primary" data-url="http://develop.admin.manhua.weibo.com/cmdb/cmdb_script/cmdb_script_log_list" onclick="$.clickJump(this)" data-title="当前位置:脚本运行日志">
+                            脚本运行日志                        </button>
+
+                        
+                </p>
+                            <p class="list-TOP-nav" style="padding-left: 15px; height: 50px; line-height: 50px; border-bottom: 1px solid rgb(204, 204, 204); display: none;" id="three-level-404">
+                    
+                        <button class="layui-btn layui-btn-normal" data-url="http://develop.admin.manhua.weibo.com/cmdb/cmdb_action_log/cmdb_action_log_list" onclick="$.clickJump(this)" data-title="当前位置:日志列表">
+                            日志列表                        </button>
+
+                        
+                </p>
+                            <p class="list-TOP-nav" style="    padding-left: 15px;height: 50px; line-height: 50px; display: none; border-bottom: 1px solid #ccc;" id="three-level-187">
+                    
+                        <button class="layui-btn layui-btn-primary" data-url="http://develop.admin.manhua.weibo.com/check/html/html_batch_check" onclick="$.clickJump(this)" data-title="当前位置:html批量检测">
+                            html批量检测                        </button>
+
+                        
+                        <button class="layui-btn layui-btn-primary" data-url="http://develop.admin.manhua.weibo.com/check/html/html_view" onclick="$.clickJump(this)" data-title="当前位置:html视图">
+                            html视图                        </button>
+
+                        
+                        <button class="layui-btn layui-btn-primary" data-url="http://develop.admin.manhua.weibo.com/check/html/html_list" onclick="$.clickJump(this)" data-title="当前位置:html列表">
+                            html列表                        </button>
+
+                        
+                        <button class="layui-btn layui-btn-primary" data-url="http://develop.admin.manhua.weibo.com/check/html/html_form" onclick="$.clickJump(this)" data-title="当前位置:新增html页面">
+                            新增html页面                        </button>
+
+                        
+                </p>
+                    </div>
+
+        <div class="layui-main-cont">
+            <iframe src="%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86_files/cmdb_service_list.html" id="iframe"></iframe>
+        </div>
+    </div>
+    <!-- 内容主体区域 E-->
+</div>
+<!-- 外层盒子E -->
+<script type="text/javascript">
+	
+    $('#nav_list a').on('click',function(){
+		var nav_a=$(this).attr('data-url');
+		
+		var layuiBtn=$('.list-TOP-nav button');
+		for(var i=0;i<layuiBtn.length;i++){
+			var btn=$(layuiBtn[i]);
+		
+			if(btn.attr('data-url')==nav_a){
+				$(btn).removeClass('layui-btn-primary').addClass('layui-btn-normal')
+				$(btn).siblings().removeClass("layui-btn-normal");
+				$(btn).siblings().addClass("layui-btn-primary");
+				return;
+			}
+		}
+		
+	})
+   $('.menu').click(function()
+   {
+        var id = $(this).data('id');
+        var $ele=$("#three-level-"+id);
+
+        if(! $ele.size() > 0) {
+            $('.list-TOP-nav').hide();
+        }else{
+            $ele.show();
+            $ele.siblings().hide();
+        }
+
+   })
+   $('.list-TOP-nav .layui-btn').click(function(){
+   		$(this).attr('class',"layui-btn layui-btn-normal");
+   		$(this).siblings().attr('class',"layui-btn layui-btn-primary");
+   	
+   })
+</script>
+
+
+
+<script>
+        /*iframe 跳转匹配*/
+//        $.disableBack();//禁用浏览器回退按钮
+
+        $(function () {
+                /*刷新页面 获取cookie 进入对应页面*/
+                var dataUrl = $.cookie.get('data-url');
+                var dataTitle = $.cookie.get('data-title');
+                if (!dataUrl||!dataTitle){
+                        return
+                }else {
+                        var navA=$('.layui-nav-child a');
+                        for (var i=0;i<navA.length;i++){
+                                var ele=$(navA[i]);
+                                if (ele.attr('data-title')==dataTitle){
+                                        ele.addClass('layui-this');
+                                        ele.siblings().removeClass('layui-this');
+                                        var par=ele.parent().parent().parent();
+                                        $(par).addClass('layui-nav-itemed');
+                                        $(par).siblings().removeClass('layui-nav-itemed');
+                                }
+                        }
+
+                        $('#body-top').find('.top_container').text(dataTitle);
+                        $('.layui-main-cont').find('iframe').attr('src',dataUrl)
+                }
+
+               
+        })
+        layui.use(['element','layer'], function(){
+                var element = layui.element;
+                /*侧边栏切换*/
+                $('.layui-nav-child a').click(function(e){
+                        e.preventDefault();
+                        // 获取需要 跳转的url 地址
+                        var dataUrl = $(this).attr('data-url');
+                        var dataTitle = $(this).attr('data-title');
+                        
+                        console.log(dataTitle);
+                        if (!dataUrl||!dataTitle){
+                                layer.msg('缺少跳转路径信息!');
+                                return;
+                        }else {  
+                                $.cookie.set('data-url',dataUrl)
+                                $.cookie.set('data-title',dataTitle)
+                        }
+                        $('#body-top').find('.top_container').text(dataTitle);
+
+                        $('.layui-main-cont').find('iframe').attr('src',dataUrl)
+                })
+                $('.layui-nav-item > a').click(function(e){
+                        var parents = $(this).closest('.layui-nav-item');
+                        var parentsSilib = parents.siblings('.layui-nav-item');
+                        var length = $(this).parent().attr('class').length;
+                        console.log(length)
+                        if(length == 31){
+                                parents.addClass('layui-nav-itemed');
+                                parentsSilib.removeClass('layui-nav-itemed');
+                                return
+                        }else{
+                                parents.removeClass('layui-nav-itemed');
+                                return     
+                        }
+                        
+                                
+                })
+
+        });
+        
+</script>
+</body></html>

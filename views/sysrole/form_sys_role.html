@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>欢迎页面-X-admin2.0</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+    {{template "header.html" .}}
+</head>
+
+<body>
+<div class="x-body">
+    <form id="form-data" method="post" class="layui-form layui-form-pane">
+
+        <div class="layui-form-item">
+            <label for="RoleName" class="layui-form-label">
+                <span class="x-red">*</span>角色名
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" id="RoleName" name="RoleName" required="" lay-verify="required|RoleName"
+                       autocomplete="off" class="layui-input" value="{{.RoleRow.RoleName}}">
+            </div>
+        </div>
+
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">
+                拥有权限
+            </label>
+            <table  class="layui-table layui-input-block">
+                <tbody>
+
+                {{range $key,$value := .MenuList}}
+                {{if eq $value.MenuLevel 1}}
+
+                <tr>
+                    <td>
+                        <input type="checkbox" name="power" value="{{$value.Id}}" lay-skin="primary" title="{{$value.MenuName}}"
+                        {{range $k,$v := $.PowerList}}
+                            {{if eq $v.MenuId $value.Id}}
+                                checked="checked"
+                            {{end}}
+                        {{end}}
+                        >
+                    </td>
+                    <td>
+
+                    </td>
+                </tr>
+
+                {{else}}
+
+                <tr>
+                    <td>
+                        &nbsp;&nbsp;&nbsp;&nbsp;├
+                        <input lay-skin="primary" name="power" type="checkbox" value="{{$value.Id}}" title="{{$value.MenuName}}"
+                        {{range $k,$v := $.PowerList}}
+                        {{if eq $v.MenuId $value.Id}}
+                               checked="checked"
+                        {{end}}
+                        {{end}}
+                        >
+                    </td>
+                    <td>
+                        <div class="layui-input-block">
+                        {{range $k,$v := $value.FuncsInfo}}
+                            <input lay-skin="primary" name="power" type="checkbox" value="{{$value.Id}}-{{$v.FuncId}}" title="{{$v.FuncDesc}}"
+                            {{range $kk,$vv := $.PowerList}}
+                                {{if eq $vv.MenuId $value.Id}}
+                                {{if eq $vv.ActionId $v.FuncId}}
+                                       checked="checked"
+                                {{end}}
+                                {{end}}
+                            {{end}}
+                            >
+                        {{end}}
+                        </div>
+                    </td>
+                </tr>
+
+                {{end}}
+                {{end}}
+
+                </tbody>
+            </table>
+        </div>
+
+        <div class="layui-form-item layui-form-text">
+            <label for="Intro" class="layui-form-label">
+                描述
+            </label>
+            <div class="layui-input-block">
+                <textarea placeholder="请输入内容" id="Intro" name="Intro" class="layui-textarea">{{.RoleRow.Intro}}</textarea>
+            </div>
+        </div>
+
+        <div class="layui-form-item" pane="">
+            <label class="layui-form-label">角色状态</label>
+            <div class="layui-input-block">
+                <input type="checkbox" name="RoleStatus" id="RoleStatus" lay-skin="switch" lay-text="ON|OFF" value="{{.RoleRow.RoleStatus}}" lay-filter="Status"
+                {{if .RoleRow}}
+                    {{if eq .RoleRow.RoleStatus  1}}
+                           checked="checked"
+                    {{end}}
+                {{end}}
+                >
+                <div class="layui-unselect layui-form-switch" lay-skin="_switch"><em>OFF</em><i></i></div>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <input type="hidden" id="Id" name="Id" value="{{.RoleRow.Id}}">
+            <input type="hidden" name="MenuMap" id="MenuMap" value="">
+            <input type="hidden" name="CreateTime" id="CreateTime" value="{{.RoleRow.CreateTime}}">
+            <button class="layui-btn" lay-submit="" lay-filter="sub">提交</button>
+        </div>
+
+    </form>
+</div>
+<script>
+    layui.use(['form','layer'], function(){
+        var form = layui.form
+        var layer = layui.layer
+
+        form.on('submit(sub)', function(data){
+            var loading = layer.load(1, {shade: [0.1,'#fff']});
+            var str = ''
+            $("input[name='power']:checked").each(function () {
+                var current = $(this).val()
+                str += current + ","
+            });
+            str = str.substring(0,str.length-1)
+            $("#MenuMap").val(str)
+            formSubmit('{{urlfor "SysRoleController.SaveSysRole"}}', $("#form-data").serialize(),"alert","reload")
+            layer.close(loading);
+            return false
+        })
+    })
+</script>
+</body>
+</html>

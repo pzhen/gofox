@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>欢迎页面-X-admin2.0</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+          content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi"/>
+{{template "header.html" .}}
+</head>
+
+<body>
+<div class="x-body">
+    <form id="form-data" method="post" class="layui-form layui-form-pane">
+
+        <div class="layui-form-item">
+            <label for="UserName" class="layui-form-label">
+                <span class="x-red">*</span>用户名
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" id="UserName" name="UserName" required="" lay-verify="required|UserName"
+                       autocomplete="off" class="layui-input" value="{{.DataRow.UserName}}">
+            </div>
+        </div>
+
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">
+                拥有权限
+            </label>
+            <table class="layui-table layui-input-block">
+                <tbody>
+                <tr>
+                    <td>
+                    {{range $key,$value := .RoleList}}
+
+                        <input type="checkbox" name="roles" value="{{$value.Id}}" lay-skin="primary" title="{{$value.RoleName}}"
+                        {{range $k,$v := $.RoleIdArr}}
+                        {{if eq $v $value.Id}}
+                               checked="checked"
+                        {{end}}
+                        {{end}}
+                        >
+
+                    {{end}}
+                    </td>
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+        <div class="layui-form-item">
+            <label for="Password" class="layui-form-label">
+                <span class="x-red">*</span>设置密码
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" id="Password" name="Password" required="" lay-verify="required|UserName"
+                       autocomplete="off" class="layui-input" value="">
+            </div>
+        </div>
+
+        <div class="layui-form-item" pane="">
+            <label class="layui-form-label">用户状态</label>
+            <div class="layui-input-block">
+                <input type="checkbox" name="UserStatus" id="UserStatus"  lay-skin="switch" lay-text="ON|OFF"
+                       value="{{.DataRow.UserStatus}}" lay-filter="Status"
+                {{if .DataRow}}
+                {{if eq .DataRow.UserStatus  1}}
+                       checked="checked"
+                {{end}}
+                {{end}}
+                >
+                <div class="layui-unselect layui-form-switch" lay-skin="_switch"><em>OFF</em><i></i></div>
+            </div>
+        </div>
+
+        <div class="layui-form-item" pane="">
+            <label class="layui-form-label">是否超管</label>
+            <div class="layui-input-block">
+                <input type="checkbox" name="UserType" id="UserType"  lay-skin="switch" lay-text="ON|OFF"
+                       value="{{.DataRow.UserType}}" lay-filter="Status"
+                {{if .DataRow}}
+                {{if eq .DataRow.UserType  1}}
+                       checked="checked"
+                {{end}}
+                {{end}}
+                >
+                <div class="layui-unselect layui-form-switch" lay-skin="_switch"><em>OFF</em><i></i></div>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <input type="hidden" id="Id" name="Id" value="{{.DataRow.Id}}">
+            <input type="hidden" name="RoleId" id="RoleId" value="">
+            <input type="hidden" name="CreateTime" id="CreateTime" value="{{.DataRow.CreateTime}}">
+            <button class="layui-btn" lay-submit="" lay-filter="sub">提交</button>
+        </div>
+
+    </form>
+</div>
+<script>
+    layui.use(['form', 'layer'], function () {
+        var form = layui.form
+        var layer = layui.layer
+
+        form.on('submit(sub)', function (data) {
+            var loading = layer.load(1, {shade: [0.1, '#fff']});
+            var str = ''
+            ;
+            $("input[name='roles']:checked").each(function () {
+                var current = $(this).val()
+                str += current + ","
+            });
+            str = str.substring(0,str.length-1)
+            $("#RoleId").val(str)
+            formSubmit('{{urlfor "SysUserController.SaveSysUser"}}', $("#form-data").serialize(), "alert", "reload")
+            layer.close(loading);
+            return false
+        })
+    })
+</script>
+</body>
+</html>

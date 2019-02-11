@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>欢迎页面-X-admin2.0</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+    {{template "header.html" .}}
+</head>
+
+<body>
+
+<div class="x-nav">
+      <span class="layui-breadcrumb">
+        <a href="">系统管理</a>
+        <a href="">日志管理</a>
+        <a>
+          <cite>日志列表</cite></a>
+      </span>
+    <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
+        <i class="layui-icon" style="line-height:30px">ဂ</i></a>
+</div>
+
+<div class="x-body">
+
+    <div class="layui-row">
+        <form class="layui-form layui-col-md12 x-so">
+            <input class="layui-input" placeholder="开始日" name="start_time" id="start_time" value="{{.PageInfo.Where.start_time}}">
+            <input class="layui-input" placeholder="截止日" name="end_time" id="end_time" value="{{.PageInfo.Where.end_time}}">
+
+            <input type="text" name="user_name"  placeholder="请输入用户名" autocomplete="off" class="layui-input" value="{{.PageInfo.Where.user_name}}">
+            <button class="layui-btn"  lay-submit="" lay-filter="sreach" style="margin-top: -3px;"><i class="layui-icon">&#xe615;</i></button>
+        </form>
+    </div>
+
+    <xblock>
+        <button class="layui-btn layui-btn-danger" onclick="deleteDataByBatch('{{urlfor "SysLogController.DeleteSysLog"}}')"><i class="layui-icon layui-icon-delete"></i>批量删除</button>
+        <span class="x-right" style="line-height:40px">共有数据：{{.PageInfo.TotalRows}} 条</span>
+    </xblock>
+
+    <table class="layui-table">
+        <thead>
+        <tr>
+            <th width="10">
+                <div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>
+            </th>
+            <th width="50">ID</th>
+            <th width="320">url</th>
+            <th width="320">urlFor</th>
+            <th width="50">用户ID</th>
+            <th width="120">用户名称</th>
+            <th width="300">数据</th>
+            <th width="170">时间</th>
+            <th width="30">操作</th>
+        </thead>
+        <tbody>
+
+        {{range $key,$value := .DataList}}
+            <tr>
+                <td>
+                    <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='{{$value.Id}}'><i class="layui-icon">&#xe605;</i></div>
+                </td>
+                <td>{{$value.Id}}</td>
+                <td>{{$value.Url}}</td>
+                <td>{{$value.UrlFor}}</td>
+                <td>{{$value.UserId}}</td>
+                <td>{{$value.UserName}}</td>
+                <td>
+                    <a style="text-decoration:underline" href="javascript:showAllContent(this,'{{$value.FormData}}')">{{substr $value.FormData 0 50}}</a>
+                </td>
+                <td>{{$value.CreateTime | convertt}}</td>
+                <td class="td-manage">
+                    <a title="删除" onclick="deleteDataByOne('{{urlfor "SysLogController.DeleteSysLog"}}',this,'{{$value.Id}}')" href="javascript:;">
+                        <i class="layui-icon">&#xe640;</i>
+                    </a>
+                </td>
+            </tr>
+        {{end}}
+        </tbody>
+    </table>
+
+    <div id="pageDiv"></div>
+
+</div>
+<script>
+
+    //分页
+    layui.use('laypage', function () {
+        var laypage = layui.laypage;
+        //执行一个laypage实例
+        laypage.render({
+            elem: 'pageDiv' //注意，这里的 test1 是 ID，不用加 # 号
+            , count: "{{.PageInfo.TotalRows}}" //数据总数，从服务端得到
+            , limit: "{{.PageInfo.RowsNum}}" //每页显示的条数
+            , curr:  "{{.PageInfo.PageNum}}"
+            , theme: "#c00"
+            , layout: ['count', 'prev', 'page', 'next', 'skip']
+            , jump: function (obj, first) {
+                //首次不执行
+                if (!first) {
+                    window.location.href = "{{.PageInfo.PageUrl}}page_num=" + obj.curr
+                }
+            }
+        });
+    });
+</script>
+</body>
+</html>

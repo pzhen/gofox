@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <title>CMDB-业务线列表</title>
+    <link rel="stylesheet" href="layui.css">
+    <link rel="stylesheet" href="iconfont.css">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="cmdb_service_list_data/index.css">
+    <style>
+        td, th {
+            word-break: break-all !important;
+            text-align: left !important;
+        }
+        .layui-form-item{
+            float: left;clear: none;
+        }
+
+        .search_btn {
+            height: 32px;margin-top: 3px;margin-left: 20px
+        }
+    </style>
+<link id="layuicss-layer" rel="stylesheet" href="layer.css" media="all"></head>
+
+<body data-body="body" style="padding-bottom: 80px;">
+<!-- 主题部分S -->
+<div class="layui-container">
+    <!-- 头部输入框S-->
+    <form action="/cmdb/cmdb_service/cmdb_service_list" method="get">
+        <!--  输入框S  -->
+        <div class="layui-form">
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">服务ID</label>
+                <div class="layui-input-block">
+                    <input name="service_id" placeholder="业务ID" autocomplete="off" class="layui-input input" type="text">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">标识</label>
+                <div class="layui-input-block">
+                    <select name="service_flag" class="layui-select">
+                        <option value="0" selected="selected">全部</option>
+                                                    <option value="mysql">mysql</option>
+                                                    <option value="redis">redis</option>
+                                                    <option value="nginx">nginx</option>
+                                                    <option value="mongodb">mongodb</option>
+                                                    <option value="logstash">logstash</option>
+                                                    <option value="elasticsearch">elasticsearch</option>
+                                            </select><div class="layui-unselect layui-form-select"><div class="layui-select-title"><input placeholder="请选择" value="全部" readonly="readonly" class="layui-input layui-unselect" type="text"><i class="layui-edge"></i></div><dl class="layui-anim layui-anim-upbit"><dd lay-value="0" class="layui-this">全部</dd><dd lay-value="mysql" class="">mysql</dd><dd lay-value="redis" class="">redis</dd><dd lay-value="nginx" class="">nginx</dd><dd lay-value="mongodb" class="">mongodb</dd><dd lay-value="logstash" class="">logstash</dd><dd lay-value="elasticsearch" class="">elasticsearch</dd></dl></div>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">服务名称</label>
+                <div class="layui-input-block">
+                    <input name="service_name" placeholder="服务名称" autocomplete="off" class="layui-input input" type="text">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">负责人</label>
+                <div class="layui-input-block">
+                    <input name="service_keeper_id" autocomplete="off" placeholder="负责人" class="layui-input input" type="text">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">状态</label>
+                <div class="layui-input-block">
+                    <select name="service_status" class="layui-select">
+                        <option value="0" selected="selected">默认</option>
+                        <option value="1">正常</option>
+                        <option value="2">屏蔽</option>
+                    </select><div class="layui-unselect layui-form-select"><div class="layui-select-title"><input placeholder="请选择" value="默认" readonly="readonly" class="layui-input layui-unselect" type="text"><i class="layui-edge"></i></div><dl class="layui-anim layui-anim-upbit"><dd lay-value="0" class="layui-this">默认</dd><dd lay-value="1" class="">正常</dd><dd lay-value="2" class="">屏蔽</dd></dl></div>
+                </div>
+            </div>
+
+            <button type="submit" lay-submit="" lay-filter="formDemo" class="layui-btn layui-btn-primary search_btn">查询</button>
+        </div>
+        <!--  输入框E  -->
+
+        <!-- 表格S -->
+        <div class="layui-form">
+            <table class="layui-table" style="margin-top:0">
+                <colgroup>
+                    <col width="10">
+                    <col width="100">
+                    <col width="70">
+                    <col width="200">
+                    <col width="200">
+                    <col width="100">
+                    <col width="80">
+                    <col width="80">
+                    <col width="50">
+                    <col width="120">
+                    <col width="120">
+                    <col width="120">
+                </colgroup>
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>服务名称</th>
+                    <th>服务标识</th>
+                    <th>部署路径</th>
+                    <th>主机列表</th>
+                    <th>服务版本</th>
+                    <th>负责人</th>
+                    <th>添加/修改人</th>
+                    <th>状态</th>
+                    <th>创建时间</th>
+                    <th>更新时间</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                                        <tr>
+                            <td>13</td>
+                            <td>动漫Nginx</td>
+                            <td>nginx</td>
+                            <td>/usr/local/vcomic/nignx</td>
+                            <td>
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                
+                                <a style="text-decoration:underline" href="javascript:showAllContent(this,'<span%20class=&quot;layui-badge%20layui-bg-black&quot;>10.205.13.3</span><span%20class=&quot;layui-badge%20layui-bg-black&quot;>127.0.0.1</span><span%20class=&quot;layui-badge%20layui-bg-black&quot;>192.168.1.1</span>')">10.205.13.3,127.0.0.1,192.168.1.1</a>
+
+                            </td>
+                            <td>Tenginx-2.2.2</td>
+                            <td>36 : 徐熠</td>
+                            <td>1 : admin</td>
+                            <td>
+                                                                    正常
+                                                            </td>
+
+                            <td>
+                                2018-07-24 10:57:57                            </td>
+
+                            <td>
+                                2018-07-24 11:02:45                            </td>
+
+                            <td>
+
+                                    <div class="layui-btn-group">
+                                        <a href="javascript:;" data-url="http://develop.admin.manhua.weibo.com/cmdb/cmdb_service/cmdb_service_edit_form?service_id=13" data-title="当前位置:修改任务" class="layui-btn layui-btn-xs" onclick="$.clickJump(this)">
+                                            修改
+                                        </a>
+                                                                                <a href="javascript:;" data-url="http://develop.admin.manhua.weibo.com/cmdb/cmdb_service/cmdb_service_status_edit?service_id=13&amp;service_status=2" data-title="当前位置:修改状态" class="layui-btn layui-btn-xs layui-bg-cyan" onclick="cmdb_service_edit_status(this)">
+                                            屏蔽
+                                        </a>
+                                                                            </div>
+
+                            </td>
+                        </tr>
+                                                <tr>
+                            <td>12</td>
+                            <td>redissssssssss</td>
+                            <td>redis</td>
+                            <td>/user/sssss</td>
+                            <td>
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+    
+                                <a style="text-decoration:underline" href="javascript:showAllContent(this,'<span%20class=&quot;layui-badge%20layui-bg-black&quot;>10.205.13.1</span><span%20class=&quot;layui-badge%20layui-bg-black&quot;>10.205.13.2</span><span%20class=&quot;layui-badge%20layui-bg-black&quot;>10.205.13.3</span><span%20class=&quot;layui-badge%20layui-bg-black&quot;>10.205.13.4</span><span%20class=&quot;layui-badge%20layui-bg-black&quot;>127.0.0.1</span><span%20class=&quot;layui-badge%20layui-bg-black&quot;>127.0.0.64</span>')">10.205.13.1,10.205.13.2,10.205.13.3,10.205.13.4,127.0.0.1,127.0.0.64</a>
+
+                            </td>
+                            <td>23</td>
+                            <td>36 : 徐熠</td>
+                            <td>1 : admin</td>
+                            <td>
+                                                                    正常
+                                                            </td>
+
+                            <td>
+                                2018-07-22 03:57:59                            </td>
+
+                            <td>
+                                2018-07-22 04:16:57                            </td>
+
+                            <td>
+
+                                    <div class="layui-btn-group">
+                                        <a href="javascript:;" data-url="http://develop.admin.manhua.weibo.com/cmdb/cmdb_service/cmdb_service_edit_form?service_id=12" data-title="当前位置:修改任务" class="layui-btn layui-btn-xs" onclick="$.clickJump(this)">
+                                            修改
+                                        </a>
+                                                                                <a href="javascript:;" data-url="http://develop.admin.manhua.weibo.com/cmdb/cmdb_service/cmdb_service_status_edit?service_id=12&amp;service_status=2" data-title="当前位置:修改状态" class="layui-btn layui-btn-xs layui-bg-cyan" onclick="cmdb_service_edit_status(this)">
+                                            屏蔽
+                                        </a>
+                                                                            </div>
+
+                            </td>
+                        </tr>
+                                                <tr>
+                            <td>11</td>
+                            <td>es软件服务</td>
+                            <td>elasticsearch</td>
+                            <td>/opt/software/es</td>
+                            <td>
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                            
+                                <a style="text-decoration:underline" href="javascript:showAllContent(this,'<span%20class=&quot;layui-badge%20layui-bg-black&quot;>127.0.0.1</span><span%20class=&quot;layui-badge%20layui-bg-black&quot;>127.0.0.64</span>')">127.0.0.1,127.0.0.64</a>
+
+                            </td>
+                            <td>1.0</td>
+                            <td>36 : 徐熠</td>
+                            <td>1 : admin</td>
+                            <td>
+                                                                    正常
+                                                            </td>
+
+                            <td>
+                                2018-07-21 23:50:41                            </td>
+
+                            <td>
+                                2018-07-22 01:24:19                            </td>
+
+                            <td>
+
+                                    <div class="layui-btn-group">
+                                        <a href="javascript:;" data-url="http://develop.admin.manhua.weibo.com/cmdb/cmdb_service/cmdb_service_edit_form?service_id=11" data-title="当前位置:修改任务" class="layui-btn layui-btn-xs" onclick="$.clickJump(this)">
+                                            修改
+                                        </a>
+                                                                                <a href="javascript:;" data-url="http://develop.admin.manhua.weibo.com/cmdb/cmdb_service/cmdb_service_status_edit?service_id=11&amp;service_status=2" data-title="当前位置:修改状态" class="layui-btn layui-btn-xs layui-bg-cyan" onclick="cmdb_service_edit_status(this)">
+                                            屏蔽
+                                        </a>
+                                                                            </div>
+
+                            </td>
+                        </tr>
+                                                <tr>
+                            <td>10</td>
+                            <td>mysql软件服务</td>
+                            <td>mysql</td>
+                            <td>/opt/software/mysql</td>
+                            <td>
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                            
+                                <a style="text-decoration:underline" href="javascript:showAllContent(this,'<span%20class=&quot;layui-badge%20layui-bg-black&quot;>10.205.13.1</span><span%20class=&quot;layui-badge%20layui-bg-black&quot;>10.205.13.2</span>')">10.205.13.1,10.205.13.2</a>
+
+                            </td>
+                            <td>1.0</td>
+                            <td>36 : 徐熠</td>
+                            <td>1 : admin</td>
+                            <td>
+                                                                    正常
+                                                            </td>
+
+                            <td>
+                                2018-07-21 23:45:47                            </td>
+
+                            <td>
+                                2018-07-22 01:27:56                            </td>
+
+                            <td>
+
+                                    <div class="layui-btn-group">
+                                        <a href="javascript:;" data-url="http://develop.admin.manhua.weibo.com/cmdb/cmdb_service/cmdb_service_edit_form?service_id=10" data-title="当前位置:修改任务" class="layui-btn layui-btn-xs" onclick="$.clickJump(this)">
+                                            修改
+                                        </a>
+                                                                                <a href="javascript:;" data-url="http://develop.admin.manhua.weibo.com/cmdb/cmdb_service/cmdb_service_status_edit?service_id=10&amp;service_status=2" data-title="当前位置:修改状态" class="layui-btn layui-btn-xs layui-bg-cyan" onclick="cmdb_service_edit_status(this)">
+                                            屏蔽
+                                        </a>
+                                                                            </div>
+
+                            </td>
+                        </tr>
+                        
+                </tbody>
+            </table>
+        </div>
+        <!-- 表格E -->
+
+        <!-- 分页器S -->
+        <div id="test1"><div class="layui-box layui-laypage layui-laypage-default" id="layui-laypage-1"><a href="javascript:;" class="layui-laypage-prev layui-disabled" data-page="0">上一页</a><span class="layui-laypage-curr"><em class="layui-laypage-em"></em><em>1</em></span><a href="javascript:;" class="layui-laypage-next layui-disabled" data-page="2">下一页</a><span class="layui-laypage-skip">到第<input min="1" value="1" class="layui-input" type="text">页<button type="button" class="layui-laypage-btn">确定</button></span></div></div>
+        <!-- 分页器E -->
+
+    </form>
+    <!-- 头部输入框E -->
+
+</div>
+<!-- 主题部分E -->
+
+
+<script src="layui.js"></script>
+<script src="jquery-1.js"></script>
+<script src="base.js"></script>
+<script>
+
+    layui.use('form', function () {
+        var form = layui.form;
+        form.on('submit(formDemo)', function (data) {
+        });
+    });
+
+    layui.use('laypage', function () {
+        var laypage = layui.laypage;
+
+        //执行一个laypage实例
+        laypage.render({
+            elem: 'test1' //注意，这里的 test1 是 ID，不用加 # 号
+            , count: 4 //数据总数，从服务端得到
+            , limit: 20 //每页显示的条数
+            ,curr:1            ,layout:['prev','page','next','skip']
+            , jump: function (obj, first) {
+                //obj包含了当前分页的所有参数，比如：
+                console.log(obj.curr); //得到当前页，以便向服务端请求对应页的数据。
+                console.log(obj.limit); //得到每页显示的条数
+
+                //首次不执行
+                if (!first) {
+                    window.location.href= "http://wbcomic.admin.manhua.weibo.com//cmdb/cmdb_service/service_list?&page_num="+obj.curr+""
+                }
+            }
+        });
+    });
+
+    function cmdb_service_edit_status(o) {
+        layer.confirm('确认要执行操作吗？',{btn:['确定','取消']},function(index){
+            url = $(o).attr("data-url")
+            $.ajax({
+                url: url,
+                data: {},
+                type: 'GET',
+                success: function (json) {
+                    layer.alert(json.message, {icon: 6});
+                    window.location.href = "/cmdb/cmdb_service/cmdb_service_list"
+                    layer.close(indexs);
+                }
+            });
+            return false;
+        });
+    }
+
+    function showAllContent(o,data) {
+        layer.open({
+            type: 1,
+            area: ['600px', '360px'],
+            shadeClose: true, //点击遮罩关闭
+            content: '\<\div style="padding:20px;display:block;word-break: break-all;word-wrap: break-word;line-height:22px">'+data+'\<\/div>'
+        });
+    }
+</script>
+
+<div class="layui-layer-move"></div></body></html>
