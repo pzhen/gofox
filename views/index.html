@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>layui - 经典模块化前端 UI 框架</title>
+    <meta name="keywords" content="layui,ui,ui框架,前端框架,JS组件">
+    <meta name="description" content="layui 是一款采用自身模块规范编写的前端 UI 框架，遵循原生 HTML/CSS/JS 的书写与组织形式，门槛极低，拿来即用。其外在极简，却又不失饱满的内在，体积轻盈，组件丰盈，从核心代码到 API 的每一处细节都经过精心雕琢，非常适合界面的快速开发。">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="stylesheet" href="/static/lib/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="/static/front/global.css" media="all">
+    <link rel="preload" href="/static/front/integrator.js" as="script">
+    <script type="text/javascript" src="/static/front/integrator.js"></script>
+    <link id="layuicss-skincodecss" rel="stylesheet" href="/static/front/code.css" media="all">
+    <link id="layuicss-layer" rel="stylesheet" href="/static/front/layer.css" media="all">
+    <link rel="shortcut icon" href="/static/front/favicon.ico" type="image/x-icon" />
+</head>
+<body class="site-home" id="LAY_home" style="background-color: #eee;" data-date="2-11">
+
+
+<div class="layui-header header header-index" winter="">
+    <div class="layui-main">
+
+        <a class="logo" href="/" style="color: #fff9ec;font-size: large">
+            <span class="layui-badge-dot" style="margin-bottom: 2px;"></span>
+            GOFOX
+            <span class="layui-badge-dot" style="margin-bottom: 2px;"></span>
+        </a>
+
+        <ul class="layui-nav">
+            <li class="layui-nav-item ">
+                {{/*<a href="https://www.layui.com/doc/">文档</a>*/}}
+            </li>
+            <li class="layui-nav-item ">
+                <a href="/sys_user/login_form" target="_blank">演示 <span class="layui-badge-dot"></span></a>
+            </li>
+
+
+            <span class="layui-nav-bar"></span></ul>
+    </div>
+</div>
+<!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+<!--[if lt IE 9]>
+<script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+<script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+<div class="site-banner">
+    <div class="site-banner-bg" style="background-image: url(/static/front/banner.png); background-size: cover;">
+    </div>
+    <div class="site-banner-main">
+        <div class="site-zfj site-zfj-anim">
+            <i class="layui-icon" style="color: #fff; color: rgba(255,255,255,.7);"></i>
+        </div>
+        <div class="layui-anim site-desc site-desc-anim">
+            <p class="web-font-desc">GOFOX通用后台管理系统</p>
+            <cite>基于golang的通用后台管理系统,采用beego打造,面向golang的开发者.</cite>
+        </div>
+        <div class="site-download">
+            <a href="https://github.com/pzhen/gofox.git" class="layui-inline site-down" target="_blank">
+                <cite class="layui-icon"></cite>
+                立即下载
+            </a>
+        </div>
+        <div class="site-version">
+            {{/*<span>当前版本：<cite class="site-showv">1.0.1</cite></span>*/}}
+            {{/*<span><a href="https://www.layui.com/doc/base/changelog.html" rel="nofollow" target="_blank">更新日志</a></span>*/}}
+            {{/*<span>下载量：<em class="site-showdowns">884523</em></span>*/}}
+        </div>
+
+    </div>
+</div>
+<div class="layui-main">
+
+
+
+    <ul class="site-idea">
+
+        <li>
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend>开发初衷</legend>
+                <p>
+                    身处在前后端社区的繁荣之下，我们都在有意或无意地追逐。伴随着前后端完全分离,高并发的趋势下,Golang的崛起,拥有一套快速开发的通用的后台框架变得尤为重要.
+                </p>
+            </fieldset>
+        </li>
+
+        <li>
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend>开发便捷</legend>
+                <p>
+                    GOFOX通用后台管理系统可以轻松构建后台程序，完整的权限管理,统一开发规范,通用的数据提交方式,来应对产品的快速迭代.
+                </p>
+            </fieldset>
+        </li>
+
+        <li>
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend>采用技术</legend>
+                <p>
+                    GOFOX通用后台管理系统技术栈为beego+layui+mysql,由于是基于golang开发快捷,一键部署,安全可靠,无需配置运行环境.
+                </p>
+            </fieldset>
+        </li>
+
+
+    </ul>
+
+</div>
+<div class="layui-footer footer footer-index">
+    <div class="layui-main">
+        <p>© 2019 <a href="http://www.golangtab.com/">golangtab.com</a> MIT license</p>
+    </div>
+</div>
+<script async="" src="/static/front/adsbygoogle.js"></script>
+<div class="site-tree-mobile layui-hide">
+    <i class="layui-icon"></i>
+</div>
+<div class="site-mobile-shade"></div>
+<script src="/static/front/layui.js" charset="utf-8"></script>
+
+<ul class="layui-fixbar">
+    <li class="layui-icon" lay-type="bar1" style=""></li>
+    <li class="layui-icon layui-fixbar-top" lay-type="top" style="display: none;"></li>
+</ul>
+</body>
+</html>
