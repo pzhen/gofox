@@ -22,7 +22,6 @@ func convertT(in uint) (out string) {
 func main() {
 	beego.AddFuncMap("convertm", convertM)
 	beego.AddFuncMap("convertt", convertT)
-
 	beego.Run()
 }
 
