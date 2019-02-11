@@ -1,0 +1,28 @@
+# Compiled Object files, Static and Dynamic libs (Shared Objects)
+*.o
+*.a
+*.so
+.htaccess
+
+# Folders
+_obj
+_test
+.idea
+.vscode
+logs
+nbproject
+# Custom
+.DS_Store
+
+include/config/testing/config.php
+
+
+composer.json
+composer.lock
+php_errors.log
+
+vendor
+tmp
+upload
+bdemo
+glide.lock
